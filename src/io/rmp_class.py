@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import sys
 import re
 import dryscrape
+import time
 
 
 if 'linux' in sys.platform:
@@ -11,17 +12,19 @@ if 'linux' in sys.platform:
 
 
 # Read the HTML File
-url = "https://www.ratemyprofessors.com/search.jsp?queryBy=schoolId&schoolName=University+of+North+Carolina+at+Chapel+Hill&schoolID=1232&queryoption=TEACHER"
 
+url = "https://www.ratemyprofessors.com"
 session = dryscrape.Session()
 session.set_attribute('auto_load_images', False)
 session.visit(url)
+url = "https://www.ratemyprofessors.com/search.jsp?queryBy=schoolId&schoolName=University+of+North+Carolina+at+Chapel+Hill&schoolID=1232&queryoption=TEACHER"
+session.visit(url)
 # <div class="content" onclick="javascript:mtvn.btg.Controller.sendLinkEvent({ linkName:'PROFMIDPANE:LoadMore', linkType:'o' } );">Load More</div>
-overlapping_element = session.at_xpath("//*[@id='myProfprogressbtnwrap']")
-load_more = overlapping_element.exec_sript('node.parentElement.removeChild(node)')
-for i in range(5):
+load_more = session.at_xpath("//*[@id='mainContent']/div[1]/div/div[5]/div/div[1]")
+for i in range(292):
     load_more.click()
-    print("Fuck")
+    #print("Fuck")
+#time.sleep(3)
 
 page = session.body()
 #print(page)
@@ -34,7 +37,7 @@ list_of_profs = list_of_profs.find('div', attrs = {'id':'mainContent'})
 list_of_profs = list_of_profs.find('div', attrs = {'class':'left-panel'})
 list_of_profs = list_of_profs.find('div', attrs = {'class':'side-panel'})
 list_of_profs = list_of_profs.find('div', attrs = {'class':'result-list'})
-#print(list_of_profs)
+print(list_of_profs)
 list_of_profs = list_of_profs.find_all('li', attrs = {'id': re.compile('my-professor*')})
 y = 0
 for x in list_of_profs:
