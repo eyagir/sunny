@@ -1,7 +1,11 @@
+
+
 import requests
 from bs4 import BeautifulSoup
 import sys
 import dryscrape
+from course_block import course_block
+
 
 
 def get_courses(searchPattern, school):
@@ -22,17 +26,19 @@ def get_courses(searchPattern, school):
     soup = BeautifulSoup(response, 'lxml')
     table = soup.find('div', attrs={'id': 'show_results'})
 
+    codes = []
     instructors = []
     days = []
     times = []
-    types = []
+    is_lecture = []
 
-    for type in table.findAll('div', attrs={'class': 'courseNumber'}):
-        type = type.text[-3:]
-        if(int(type) >= 600):
-            types.append("REC")
+    for courseNumber in table.findAll('div', attrs={'class': 'courseNumber'}):
+        codes.append(courseNumber.text)
+        cNum = courseNumber.text[-3:]
+        if(int(cNum) < 600):
+            is_lecture.append(True)
         else:
-            types.append("LEC")
+            is_lecture.append(False)
 
     for instructor in table.findAll('div', attrs={'class': 'instructor'}):
         instructors.append(instructor.text)
@@ -46,14 +52,15 @@ def get_courses(searchPattern, school):
     output = []
 
     for i in range(len(instructors)):
-        output.append("%s %s:\t%s on %s at %s" %
-                    (types[i], i, instructors[i], days[i], times[i]))
+        cBlock = course_block(codes[i], days[i], times[i], is_lecture[i], instructors[i])
+        output.append(cBlock)
 
     return output
 
 def main():
-    for i in get_courses('comp 411', 'unc'):
-        print(i)
+    search_pattern = input("Enter a course:\t")
+    for i in get_courses(search_pattern, 'unc'):
+        print(i.content())
 
 if(__name__ == '__main__'):
     main()
