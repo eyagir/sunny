@@ -1,0 +1,84 @@
+#bannerTitle {
+    background-image: url(images/college_campus.jpg);
+    background-size: 100%;
+    background-position: center;
+}
+
+.bannerTitleText {
+    font-size: 400%;
+}
+
+.demoTitleText{
+    font-size: 200%;
+}
+
+#courseDescription {
+    background-color: lightblue;
+}
+
+@keyframes bounce {
+	0%, 20%, 60%, 100% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+
+	40% {
+		-webkit-transform: translateY(-20px);
+		transform: translateY(-20px);
+	}
+
+	80% {
+		-webkit-transform: translateY(-10px);
+		transform: translateY(-10px);
+	}
+}
+
+#blockText:hover{
+    font-weight: bold;
+    animation: bounce 2s;
+}
+
+body{
+    font-family: cursive;
+}
+
+#demoButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigationButton {
+    background-color: lightblue;
+    border: grove;
+    border-radius: 30px;
+    padding: 15px 32px;
+    text-decoration: none;
+    font-size: 30px;
+}
+
+.demoButton {
+    background-color: rgb(90, 88, 88);
+    border: grove;
+    padding: 15px 32px;
+    text-decoration: none;
+    color: white;
+}
+
+.demoCreateButton {
+    background-color: rgb(90, 88, 88);
+    border: grove;
+    padding: 15px 32px;
+    text-decoration: none;
+    color: white;
+    font-size: 190%;
+}
+
+.demoButton:hover{
+    color:white;
+}
+
+#buttonText{
+    color:black;
+}
+
