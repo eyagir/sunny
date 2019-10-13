@@ -22,8 +22,8 @@ def get_profs():
     session.visit(url)
     # <div class="content" onclick="javascript:mtvn.btg.Controller.sendLinkEvent({ linkName:'PROFMIDPANE:LoadMore', linkType:'o' } );">Load More</div>
     load_more = session.at_xpath("//*[@id='mainContent']/div[1]/div/div[5]/div/div[1]")
-    # for i in range(290):
-    #     load_more.click()
+    for i in range(292):
+        load_more.click()
 
     page = session.body()
     parsed_html = BeautifulSoup(page, 'lxml')
