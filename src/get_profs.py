@@ -35,7 +35,7 @@ def get_profs():
     list_of_profs = list_of_profs.find('div', attrs = {'class':'left-panel'})
     list_of_profs = list_of_profs.find('div', attrs = {'class':'side-panel'})
     list_of_profs = list_of_profs.find('div', attrs = {'class':'result-list'})
-    print(list_of_profs)
+    #print(list_of_profs)
     list_of_profs = list_of_profs.find_all('li', attrs = {'id': re.compile('my-professor*')})
 
     for x in list_of_profs:
