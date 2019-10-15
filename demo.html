@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="node_modules/bulma/css/bulma.css" />
+        <link rel="stylesheet" href="custom_style.css"/>
+        <title>Choose Your Schedule</title>
+    </head>
+    <body>
+            <div id="root">
+                    <script src="backEnd.js" type="module"></script>
+                    <script src="node_modules/jquery/dist/jquery.js"></script>
+            <section class="hero is-primary is-medium has-text-centered">
+                    <div class="hero-body">
+                        <div class="container">
+                            <h1 class="title demoTitleText">
+                                Schedule Creater Demo
+                            </h1>
+                            <h2 class="subtitle demoTitleText">
+                                Just Enter Your Courses And We Will Make The Best Schedule!!
+                            </h2>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                        <div class="container">
+                            <div class="columns">
+                                <div class="column">
+                                    <h1 class="title">Add Required Courses</h1>
+                                    <form>
+                                        <div class="field">
+                                            <label class="label">Course ID</label>
+                                            <div class="control">
+                                                <input class="input" type="text" placeholder="COMP" id="courseLabel">
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <label class="label">Course Number</label>
+                                            <div class="control">
+                                                <input class="input" type="text" placeholder="401" id="courseNumber">
+                                            </div>
+                                        </div>
+
+                                        <div class="field">
+                                            <div class="control">
+                                                    <div class ="button demoButton" id="courseButton">
+                                                        <p>
+                                                            Add Course
+                                                        </p>
+                                                    </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="">
+                                            <div class="">
+                                                <textarea id="courseUpdate" rows="8" cols="100"></textarea>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="column">
+                                    <h1 class="title">Time Restrictions</h1>
+                                    <form>
+                                        <div class="field">
+                                            <label class="label">Unavailable From</label>
+                                            <div class="control">
+                                                <input class="input" type="text" placeholder="11:00AM" id = "startTime">
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <label class="label">Unavailable To</label>
+                                            <div class="control">
+                                                <input class="input" type="text" placeholder="1:35PM" id = "endTime">
+                                            </div>
+                                        </div>
+
+                                        <div class="box">
+                                        <label class="">
+                                                <input type="checkbox" id="Mon">
+                                                Monday
+                                                <input id="Tue" type="checkbox">
+                                                Tuesday
+                                                <input id="Wed" type="checkbox">
+                                                Wednesday
+                                                <input id="Thur" type="checkbox">
+                                                Thursday
+                                                <input id="Fri" type="checkbox">
+                                                Friday
+                                          </label>
+                                        </div>
+                    
+                                        <div class="field">
+                                            <div class="control">
+                                                    <div class ="button demoButton" id="timeButton">
+                                                            <p>
+                                                                Add Time Restriction
+                                                            </p>
+                                                    </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="">
+                                            <div class="">
+                                                <textarea id = "timeUpdate" rows="8" cols="100"></textarea>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="section">
+                            <div class="container" id="demoButton">
+                                <div class ="button navigationButton">
+                                    <a href="schedule.html">
+                                        <p id="buttonText">
+                                            Create Your Schedule!
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                        </section>
+
+        <section class="section">
+                <div class="container" id="demoButton">
+                    <div class ="button navigationButton">
+                        <a href="index.html">
+                            <p id="buttonText">
+                                Back to Home!
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            
+    </body>
+</html>
