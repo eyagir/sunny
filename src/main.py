@@ -20,7 +20,7 @@ def main():
     course_possibilities = []
     max = 0
     while(1==1):
-        uInput = input("Choose an option and type the number:\n1.\t Add another course.\n2.\tPrint course blocks added so far.\n3.\tPrint all permutations of courses.\n4.\t Exit program\n")
+        uInput = input("Choose an option and type the number:\n1.\t Add another course.\n2.\t Print course blocks added so far.\n3.\t Print all permutations of courses.\n4.\t Exit program\n")
 
         if(uInput == '1'):
             search_pattern = input("Enter a course code:\t")
