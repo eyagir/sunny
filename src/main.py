@@ -3,7 +3,9 @@ import course_block
 from get_profs import get_profs
 import pickle
 import os.path
-import itertools
+from schedulebuilder import getOptimal
+
+
 
 
 
@@ -16,89 +18,33 @@ def main():
         prof_dict = get_profs()
         pickle.dump(prof_dict, open('prof_list.pkl', 'wb'))
 
-    subjects = []
-    course_possibilities = []
+    all_blocks = []
     max = 0
     while(1==1):
-        uInput = input("Choose an option and type the number:\n1.\t Add another course.\n2.\t Print course blocks added so far.\n3.\t Print all permutations of courses.\n4.\t Exit program\n")
+        uInput = input("Choose an option and type the number:\n1.\t Add another course.\n2.\t Print course blocks added so far.\n3.\t Print ranked schedules.\n4.\t Exit program\n")
 
         if(uInput == '1'):
             search_pattern = input("Enter a course code:\t")
             school = 'unc'
-            subjects.append(load_subject(search_pattern, school, prof_dict))
+            for block in load_subject(search_pattern, school, prof_dict):
+                all_blocks.append(block)
 
         elif (uInput == '2'):
-            for subj in subjects:
-                for cblock in subj:
-                    print(cblock.content())
+            for block in all_blocks:
+                    print(block.content())
         elif(uInput == '3'):
-           for cblock in get_optimal_cblocks(subjects):
-               print(cblock.content())
+           continue
         elif (uInput == '4'):
             break
 
 
 def load_subject(search_pattern, school, prof_dict):
     courses = c_scrape.get_courses(search_pattern, school, prof_dict)
-
     return courses
 
-def get_optimal_cblocks(subjects):
-    max_points = 0
-
-    schedule_temp = []
+def optimise_schedule(subjects):
+    return(getOptimal(subjects))
     
-    cblock_temp = ''
-
-    for subj in subjects:
-
-        cblock_temp = ''
-        highest = -1
-        for cblock in subj:
-
-            
-
-            if(cblock.rating >= highest and not conflict(cblock, schedule_temp)):
-                highest = cblock.rating
-                cblock_temp = cblock
-            
-        schedule_temp.append(cblock_temp)
-                    
-    return schedule_temp       
-
-def conflict(course_block, schedule):
-    for block in schedule:
-        if (len(set(course_block.get_day_list()).intersection(set(block.get_day_list()))) > 0):
-            if (len((set(course_block.get_time_range()).intersection(set(block.get_time_range())))) > 0 ):
-                return True
-    return False
-
-
-def get_permutations(course_blocks):
-    all_permutations = itertools.permutations(course_blocks)
-
-
-    return all_permutations
-    
-
-
-
-def add_prof(course_block):
-    return 0
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
