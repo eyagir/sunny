@@ -10,7 +10,7 @@ class course_block:
         self.rating = rating
 
     def content(self):
-        return("%s %s %s\twith\t%s (%s)\ton\t%s at %s" % ( 'LEC' if self.is_lecture else 'REC' , self.course_code, self.course_name[:20], self.professor, round(self.rating)*'*',self.days, self.time))
+        return("%s %s %s\twith\t%s (%s)\t\ton %s at %s" % ( 'LEC' if self.is_lecture else 'REC' , self.course_code, self.course_name[:20], self.professor, round(self.rating)*'*',self.days, self.time))
 
     def get_time_range(self):
         timeRange = self.time.split('-')
